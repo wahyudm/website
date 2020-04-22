@@ -1,80 +1,112 @@
 <!DOCTYPE html>
-<html  >
+<html>
+
 <head>
-  <!-- Site made with Mobirise Website Builder v4.12.3, https://mobirise.com -->
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="generator" content="Mobirise v4.12.3, mobirise.com">
-  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
-  <link rel="shortcut icon" href="assets/images/mbr-164x120.png" type="image/x-icon">
-  <meta name="description" content="Site Creator Description">
-  
-  
-  <title>peta</title>
-  <link rel="stylesheet" href="assets/web/assets/mobirise-icons/mobirise-icons.css">
-  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
-  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap-grid.min.css">
-  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap-reboot.min.css">
-  <link rel="stylesheet" href="assets/tether/tether.min.css">
-  <link rel="stylesheet" href="assets/dropdown/css/style.css">
-  <link rel="stylesheet" href="assets/theme/css/style.css">
-  <link rel="preload" as="style" href="assets/mobirise/css/mbr-additional.css"><link rel="stylesheet" href="assets/mobirise/css/mbr-additional.css" type="text/css">
-  
-  
-  
+    <title>Posisi Kereta</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.3/leaflet.css" rel="stylesheet" type="text/css" />    
+    <link href="https://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" rel="stylesheet" type="text/css" />   
+    <link href="https://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" rel="stylesheet" type="text/css" />    
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" /> 
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.0/leaflet.awesome-markers.css" rel="stylesheet" type="text/css" />
+    <link href="example_2.css" rel="stylesheet" type="text/css" />
+	<link rel="stylesheet" href="dist/L.Control.Heightgraph.css"/>
+	<link rel="stylesheet" href="dist/leaflet-search.css" />
+	<link rel="stylesheet" href="dist/MarkerCluster.css" />
+	<link rel="stylesheet" href="dist/MarkerCluster.Default.css" />
+	<link rel="stylesheet" href="dist/leaflet-sidebar.css" />
+	<link rel="stylesheet" href="dist/leaflet.zoomhome.css" media="screen">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Girassol&family=Roboto&display=swap" rel="stylesheet">
+    <style>
+    .datetimeControl p {
+        margin: 0;
+        font-size: 16px;
+    }
+    </style>
 </head>
+
 <body>
-  <section class="menu cid-qTkzRZLJNu" once="menu" id="menu1-p">
-
-    
-
-    <nav class="navbar navbar-expand beta-menu navbar-dropdown align-items-center navbar-fixed-top navbar-toggleable-sm">
-        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <div class="hamburger">
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
-        </button>
-        <div class="menu-logo">
-            <div class="navbar-brand">
-                
-                <span class="navbar-caption-wrap"><a class="navbar-caption text-black display-4" href="#top">
-                        POSISI KERETA</a></span>
-            </div>
+    <div id="sidebar" class="leaflet-sidebar collapsed">
+        <!-- Nav tabs -->
+        <div class="leaflet-sidebar-tabs">
+          <ul role="tablist">
+            <li><a href="#home" role="tab"><i class="fa fa-bars"></i></a></li>
+			<li><a href="#legend" role="tab"><i class="fa fa-map-signs"></i></a></li>
+          </ul>
+		  <ul role="tablist">
+                <li><a href="index.html"><i class="fa fa-home" style="font-size:24px"></i></a></li>
+				<li><a href="peta.html"><i class="fa fa-map-o" style="font-size:24px"></i></a></li>
+				<li><a href="index.html#tabs2-"><i class="fa fa-pencil-square-o" style="font-size:24px"></i></a></li>
+				<li><a href="index.html#footer2-3"><i class="fa fa-address-book" style="font-size:24px"></i></a></li>
+				<li><a href="#"><i class="fa fa-train" style="font-size:1px"></i></a></li>
+            </ul>
         </div>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav nav-dropdown nav-right" data-app-modern-menu="true"><li class="nav-item">
-                    <a class="nav-link link text-black display-4" href="#top">
-                        <span class="mbri-home mbr-iconfont mbr-iconfont-btn"></span>
-                        Home</a>
-                </li><li class="nav-item"><a class="nav-link link text-black display-4" href="peta.html"><span class="mbri-map-pin mbr-iconfont mbr-iconfont-btn"></span>
-                        
-                        Map</a></li><li class="nav-item"><a class="nav-link link text-black display-4" href="index.html#tabs2-8"><span class="mbri-edit mbr-iconfont mbr-iconfont-btn"></span>
-                        
-                        Guide</a></li>
-                <li class="nav-item">
-                    <a class="nav-link link text-black display-4" href="index.html#footer2-3"><span class="mbri-contact-form mbr-iconfont mbr-iconfont-btn"></span>
-                        
-                        Contact</a>
-                </li></ul>
+        
+      
+        <!-- Tab panes -->
+        <div class="leaflet-sidebar-content">
+          <div class="leaflet-sidebar-pane" id="home">
+            <h1 class="leaflet-sidebar-header">
+              Layers
+              <span class="leaflet-sidebar-close"><i class="fa fa-caret-left"></i></span>
+            </h1>
+            <span id="layercontrol"></span>
             
+      
+          </div>
+      
+          <div class="leaflet-sidebar-pane" id="legend">
+            <h1 class="leaflet-sidebar-header">Legenda<span class="leaflet-sidebar-close"><i class="fa fa-caret-left"></i></span></h1>
+			<br>
+			<br>
+			<ul>
+					<li><i class="fa fa-search" style="font-size:25px"></i>              Tab Pencarian Stasiun</li> <br>
+					<li><img src="images/train.png" width='30' alt="loko" title="Loko" class="sb-img"> 	Kereta</li><br>
+					<li><img src="images/st3.png" width='30' alt="stasiun" title="Stasiun" class="sb-img"> 	Stasiun</li><br>
+					<li><img src="images/marker.png" width='20' alt="marker" title="Marker" class="sb-img"> Lokasi Komplain Keterlambatan</li><br>
+					<li><img src="images/area-chart.png" width='30' alt="loko" title="Loko" class="sb-img"> Diagram Ketinggian Jaringan Rel</li><br>
+					<li><img src="images/jalur.png" width='30' alt="loko" title="Loko" class="sb-img"> Rel Kereta Api</li>
+				</ul>
+          </div>
         </div>
-    </nav>
-</section>
-
-
-  <section class="engine"><a href="https://mobirise.info/t">amp template</a></section><script src="assets/web/assets/jquery/jquery.min.js"></script>
-  <script src="assets/popper/popper.min.js"></script>
-  <script src="assets/bootstrap/js/bootstrap.min.js"></script>
-  <script src="assets/tether/tether.min.js"></script>
-  <script src="assets/smoothscroll/smooth-scroll.js"></script>
-  <script src="assets/dropdown/js/nav-dropdown.js"></script>
-  <script src="assets/dropdown/js/navbar-dropdown.js"></script>
-  <script src="assets/touchswipe/jquery.touch-swipe.min.js"></script>
-  <script src="assets/theme/js/script.js"></script>
-  
-  
+      </div>
+	
+	<div id="map"></div>
+	
+    <script src="https://code.jquery.com/jquery-1.11.0.js"></script>
+    <script src="https://code.jquery.com/ui/1.10.3/jquery-ui.min.js"></script>
+	
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.3/leaflet.js"></script>
+	<script type="text/javascript" src="dist/L.Control.Heightgraph.js"></script>
+	<script type="text/javascript" src="dist/leaflet-search.js"></script>
+    <script src="https://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>    
+    <script src="https://jdewit.github.io/bootstrap-timepicker/js/bootstrap-timepicker.js"></script>    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.0/leaflet.awesome-markers.js"></script>
+	<script src="https://d3js.org/d3-selection.v1.min.js"></script>
+    <script src="https://d3js.org/d3-array.v2.min.js"></script>
+	<script src="https://d3js.org/d3-color.v1.min.js"></script>
+	<script src="https://d3js.org/d3-drag.v1.min.js"></script>
+	<script src="https://d3js.org/d3-dispatch.v1.min.js"></script>
+	<script src="https://d3js.org/d3-scale.v2.min.js"></script>
+	<script src="https://d3js.org/d3-axis.v1.min.js"></script>
+	<script src="https://d3js.org/d3-format.v1.min.js"></script>
+	<script src="https://d3js.org/d3-shape.v1.min.js"></script>
+	<script src="https://d3js.org/d3-interpolate.v1.min.js"></script>
+	<script src="https://d3js.org/d3-path.v1.min.js"></script>
+	<script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
+	<script src="https://d3js.org/d3-collection.v1.min.js"></script>
+    <script src="dist/LeafletPlayback.js"></script>
+	<script src="dist/leaflet.markercluster-src.js"></script>
+	<script src="dist/leaflet-sidebar.js"></script>
+    <script src="data/ka.js"></script>
+	<script src="data/jalur.js"></script>
+	<script src="data/tweets.js"></script>
+	<script src="dist/leaflet.zoomhome.js"></script>
+    <script type="text/javascript" src="data/elevasi.js"></script>
+    <script type="text/javascript" src="data/contoh.js"></script>
+    <script src="example_2_control.js"></script>
+    <script src="example_2.js"></script>
 </body>
 </html>
