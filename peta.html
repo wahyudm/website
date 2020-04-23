@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Posisi Kereta</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.3/leaflet.css" rel="stylesheet" type="text/css" />    
+    <link href="https://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" rel="stylesheet" type="text/css" />   
+    <link href="https://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" rel="stylesheet" type="text/css" />    
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" /> 
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.0/leaflet.awesome-markers.css" rel="stylesheet" type="text/css" />
+    <link href="example_2.css" rel="stylesheet" type="text/css" />
+	<link rel="stylesheet" href="dist/L.Control.Heightgraph.css"/>
+	<link rel="stylesheet" href="dist/leaflet-search.css" />
+	<link rel="stylesheet" href="dist/MarkerCluster.css" />
+	<link rel="stylesheet" href="dist/MarkerCluster.Default.css" />
+	<link rel="stylesheet" href="dist/leaflet-sidebar.css" />
+	<link rel="stylesheet" href="dist/easy-button.css" />
+	<link rel="stylesheet" href="dist/leaflet.zoomhome.css" media="screen">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Girassol&family=Roboto&display=swap" rel="stylesheet">
+    <style>
+    .datetimeControl p {
+        margin: 0;
+        font-size: 16px;
+    }
+    </style>
+</head>
+
+<body>
+    <div id="sidebar" class="leaflet-sidebar collapsed">
+        <!-- Nav tabs -->
+	<nav>
+        <div class="leaflet-sidebar-tabs">
+          <ul role="tablist">
+            <li><a href="#home" role="tab"><i class="fa fa-bars"></i></a></li>
+			<li><a href="#legend" role="tab"><i class="fa fa-map-signs"></i></a></li>
+          </ul>
+		  <ul role="tablist">
+                <li><a href="index.html"><i class="fa fa-home" style="font-size:20px"></i></a></li>
+				<li><a href="peta.html"><i class="fa fa-map-o" style="font-size:20px"></i></a></li>
+				<li><a href="index.html#tabs2-"><i class="fa fa-pencil-square-o" style="font-size:20px"></i></a></li>
+				<li><a href="index.html#footer2-3"><i class="fa fa-address-book" style="font-size:20px"></i></a></li>
+            </ul>
+        </div>
+        
+      
+        <!-- Tab panes -->
+        <div class="leaflet-sidebar-content">
+          <div class="leaflet-sidebar-pane" id="home">
+            <h1 class="leaflet-sidebar-header">
+              Layers
+              <span class="leaflet-sidebar-close"><i class="fa fa-caret-left"></i></span>
+            </h1>
+            <span id="layercontrol"></span>
+            
+      
+          </div>
+      
+          <div class="leaflet-sidebar-pane" id="legend">
+            <h1 class="leaflet-sidebar-header">Legenda<span class="leaflet-sidebar-close"><i class="fa fa-caret-left"></i></span></h1>
+			<br>
+			<br>
+			<ul>
+					<li><i class="fa fa-search" style="font-size:25px"></i>              Tab Pencarian Stasiun</li> <br>
+					<li><img src="images/train.png" width='30' alt="loko" title="Loko" class="sb-img"> 	Kereta</li><br>
+					<li><img src="images/st3.png" width='30' alt="stasiun" title="Stasiun" class="sb-img"> 	Stasiun</li><br>
+					<li><img src="images/marker.png" width='20' alt="marker" title="Marker" class="sb-img"> Lokasi Komplain Keterlambatan</li><br>
+					<li><img src="images/area-chart.png" width='30' alt="loko" title="Loko" class="sb-img"> Diagram Ketinggian Jaringan Rel</li><br>
+					<li><img src="images/jalur.png" width='30' alt="loko" title="Loko" class="sb-img"> Rel Kereta Api</li>
+				</ul>
+          </div>
+        </div>
+		</nav>
+      </div>
+	
+	<div id="map"></div>
+	
+    <script src="https://code.jquery.com/jquery-1.11.0.js"></script>
+    <script src="https://code.jquery.com/ui/1.10.3/jquery-ui.min.js"></script>
+	
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.3/leaflet.js"></script>
+	<script type="text/javascript" src="dist/L.Control.Heightgraph.js"></script>
+	<script type="text/javascript" src="dist/leaflet-search.js"></script>
+    <script src="https://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>    
+    <script src="https://jdewit.github.io/bootstrap-timepicker/js/bootstrap-timepicker.js"></script>    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.0/leaflet.awesome-markers.js"></script>
+	<script src="https://d3js.org/d3-selection.v1.min.js"></script>
+    <script src="https://d3js.org/d3-array.v2.min.js"></script>
+	<script src="https://d3js.org/d3-color.v1.min.js"></script>
+	<script src="https://d3js.org/d3-drag.v1.min.js"></script>
+	<script src="https://d3js.org/d3-dispatch.v1.min.js"></script>
+	<script src="https://d3js.org/d3-scale.v2.min.js"></script>
+	<script src="https://d3js.org/d3-axis.v1.min.js"></script>
+	<script src="https://d3js.org/d3-format.v1.min.js"></script>
+	<script src="https://d3js.org/d3-shape.v1.min.js"></script>
+	<script src="https://d3js.org/d3-interpolate.v1.min.js"></script>
+	<script src="https://d3js.org/d3-path.v1.min.js"></script>
+	<script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
+	<script src="https://d3js.org/d3-collection.v1.min.js"></script>
+    <script src="dist/LeafletPlayback.js"></script>
+	<script src="dist/leaflet.markercluster-src.js"></script>
+	<script src="dist/leaflet-sidebar.js"></script>
+	<script src="dist/easy-button.js"></script>
+    <script src="data/ka.js"></script>
+	<script src="data/jalur.js"></script>
+	<script src="data/tweets.js"></script>
+	<script src="dist/leaflet.zoomhome.js"></script>
+    <script type="text/javascript" src="data/elevasi.js"></script>
+    <script type="text/javascript" src="data/contoh.js"></script>
+    <script src="example_2_control.js"></script>
+    <script src="example_2.js"></script>
+</body>
+</html>
