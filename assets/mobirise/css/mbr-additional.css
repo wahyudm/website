@@ -1100,7 +1100,7 @@ section.lazy-placeholder:after {
   color: #c1c1c1 !important;
 }
 .cid-rWMBHMmsvn {
-  background-image: url("../../../assets/images/bg1-1073x682.jpeg");
+  background-image: url("https://posisikereta.github.io/assets/images/bg1-1073x682.jpeg");
 }
 .cid-rWMBHMmsvn .media-container-row {
   flex-direction: row-reverse;
@@ -1129,10 +1129,10 @@ section.lazy-placeholder:after {
 .cid-rWNsauPotU {
   padding-top: 60px;
   padding-bottom: 60px;
-  background-image: url("../../../assets/images/bg3-4-1003x749.jpeg");
+  background-image: url("https://posisikereta.github.io/assets/images/bg3-4-1003x749.jpeg");
 }
 .cid-rWNsauPotU H2 {
-  color: #3006a1;
+  color: #ffffff;
 }
 .cid-rWNHj8fU1P {
   padding-top: 30px;
@@ -1172,7 +1172,7 @@ section.lazy-placeholder:after {
 .cid-rWMVKyhaHL {
   padding-top: 30px;
   padding-bottom: 30px;
-  background-image: url("../../../assets/images/bg2-1119x727.jpeg");
+  background-image: url("https://posisikereta.github.io/assets/images/bg2-1119x727.jpeg");
 }
 .cid-rWMVKyhaHL .mbr-section-subtitle {
   color: #465052;
@@ -1258,7 +1258,7 @@ section.lazy-placeholder:after {
 .cid-rWNw3onjum {
   padding-top: 30px;
   padding-bottom: 30px;
-  background-image: url("../../../assets/images/bg4-1-679x441.jpeg");
+  background-image: url("https://posisikereta.github.io/assets/images/bg4-1-679x441.jpeg");
 }
 .cid-rWNw3onjum .mbr-section-subtitle {
   color: #465052;
@@ -1343,7 +1343,7 @@ section.lazy-placeholder:after {
 .cid-rWL9rO88BS {
   padding-top: 60px;
   padding-bottom: 60px;
-  background-image: url("../../../assets/images/bg7-1-680x439.jpeg");
+  background-image: url("https://posisikereta.github.io/assets/images/bg7-1-680x439.jpeg");
 }
 .cid-rWL9rO88BS .nav-tabs {
   -webkit-justify-content: center;
@@ -1384,6 +1384,10 @@ section.lazy-placeholder:after {
 }
 .cid-rWL9rO88BS P {
   color: #232323;
+  text-align: right;
+}
+.cid-rWL9rO88BS H2 {
+  text-align: center;
 }
 .cid-rWNFyfuetK {
   padding-top: 30px;

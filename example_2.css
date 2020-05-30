@@ -8,8 +8,39 @@
 }
 
 nav ul {
-    list-style: none;
+  list-style: none;
 }
+
+@import url(https://fonts.googleapis.com/css?family=Roboto);
+
+body {
+  font-family: Roboto, sans-serif;
+}
+
+#chart {
+  max-width: 300px;
+  margin: 5px;
+  left: 0;
+}
+
+#findbox {
+	background: #eee;
+	border-radius:.125em;
+	margin-bottom: 10px;
+	padding: 2px 0;
+	width: 200px;
+	height: 26px;
+}
+.search-tooltip {
+	width: 150px;
+}
+.leaflet-control-search .search-cancel {
+	position: static;
+	float: left;
+	margin-left: -22px;
+}
+
+
 
 .leaflet-control-layers {
   border-radius: none;
@@ -34,6 +65,23 @@ nav ul {
 }
 
 #layercontrol .title {
+  font-size: 16px;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+
+#layercontrol1 {
+  display: inline-block;
+  width: 100%;
+  padding: 10px;
+  background-color: transparent;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+}
+
+#layercontrol1 .title {
   font-size: 16px;
   font-weight: bold;
   margin-bottom: 5px;
@@ -94,6 +142,10 @@ footer.lp {
 }
 
 .leaflet-control-layers-list {
+  margin-bottom: 0;
+}
+
+.leaflet-control-layers-list1 {
   margin-bottom: 0;
 }
 

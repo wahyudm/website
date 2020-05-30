@@ -502,3 +502,4 @@ var addressPoints = [
 [-6.17357319, 106.84347434, "<a href='https://twitter.com/fahmisae92/status/1081412246490640385'target='_blank'><img src='ss/502.jpg' width = '300' /></a>"],
 [-7.61893346, 111.5244878, "<a href='https://twitter.com/aniesmaruf/status/1080422643046670336'target='_blank'><img src='ss/503.jpg' width = '300' /></a>"]
 ];
+

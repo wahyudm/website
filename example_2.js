@@ -11,7 +11,7 @@ $(function() {
 		  states: [{
 			stateName: 'add-markers',
 			icon: 'fa fa-arrows-alt',
-			title: 'View Fullscreen',
+			title: 'View Fullscreen, press esc to exit full screen',
 			onClick: function openFullscreen() {
 					  if (elem.requestFullscreen) {
 						elem.requestFullscreen();
@@ -27,31 +27,12 @@ $(function() {
 		  });
 			toggle.addTo(map);
 			
-			var toggle1 = L.easyButton({
-		  states: [{
-			stateName: 'add-markers',
-			icon: 'fa fa-times',
-			title: 'Exit Fullscreen',
-			onClick: function closeFullscreen() {
-					  if (document.exitFullscreen) {
-						document.exitFullscreen();
-					  } else if (document.mozCancelFullScreen) {
-						document.mozCancelFullScreen();
-					  } else if (document.webkitExitFullscreen) {
-						document.webkitExitFullscreen();
-					  } else if (document.msExitFullscreen) {
-						document.msExitFullscreen();
-					  }
-					}
-		  }]
-		  });
-			toggle1.addTo(map);
 		
 			var mapboxUrl = 'https://api.mapbox.com/styles/v1/mapbox/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}';
 			var accessToken = 'pk.eyJ1Ijoid2FoeXVkbSIsImEiOiJjazliYzh2YmcwMnduM2hueWV3a3ozbW5sIn0.VXnWR-rP0rVVR5Z8tqCBqA';
 
-			var grayscale = L.tileLayer(mapboxUrl, {id: 'dark-v9', attribution: '', maxZoom: 20, accessToken: accessToken}).addTo(map);
-			var streets = L.tileLayer(mapboxUrl, {id: 'streets-v9', attribution: '', maxZoom: 20, accessToken: accessToken});
+			var grayscale = L.tileLayer(mapboxUrl, {id: 'dark-v9', attribution: '', maxZoom: 20, accessToken: accessToken});
+			var streets = L.tileLayer(mapboxUrl, {id: 'streets-v9', attribution: '', maxZoom: 20, accessToken: accessToken}).addTo(map);
 			
 			var esri = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
 			attribution: 'Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community'
@@ -190,11 +171,141 @@ $(function() {
 				marker.bindPopup(info);
 				markersLayer.addLayer(marker);
 			}
-			
+
+			var data1 = [
+				{"loc":[-6.91468315,107.6018077], "title":"Stasiun Bandung"},
+				{"loc":[-7.59858885,112.77808913], "title":"Stasiun Bangil"},
+				{"loc":[-7.37629635,108.54265293], "title":"Stasiun Banjar"},
+				{"loc":[-8.22288472,114.34080012], "title":"Stasiun Banyuwangi"},
+				{"loc":[-6.23648781,106.99902718], "title":"Stasiun Bekasi"},
+				{"loc":[-8.10113104,112.16238322], "title":"Stasiun Blitar"},
+				{"loc":[-7.16427559,111.88668106], "title":"Stasiun Bojonegoro"},
+				{"loc":[-6.59562804,106.79037142], "title":"Stasiun Bogor"},
+				{"loc":[-7.2373831,109.00978235], "title":"Stasiun Bumiayu"},
+				{"loc":[-7.5511063,111.65478802], "title":"Stasiun Caruban"},
+				{"loc":[-6.24266131,106.85880273], "title":"Stasiun Cawang"},
+				{"loc":[-7.32917896,108.3559307], "title":"Stasiun Ciamis"},
+				{"loc":[-6.98138228,107.83272863], "title":"Stasiun Cicalengka"},
+				{"loc":[-6.742197,106.803104], "title":"Stasiun Cigombong"},
+				{"loc":[-6.40616372,107.45823201], "title":"Stasiun Cikampek"},
+				{"loc":[-6.2554302,107.14529725], "title":"Stasiun Cikarang"},
+				{"loc":[-6.43556999,107.73959455], "title":"Stasiun Cikaum"},
+				{"loc":[-6.918804,107.62589], "title":"Stasiun Cikudapateu"},
+				{"loc":[-6.88559384,107.53585923], "title":"Stasiun Cimahi"},
+				{"loc":[-7.093561,108.100454], "title":"Stasiun Cipeundeuy"},
+				{"loc":[-6.214316,106.886106], "title":"Stasiun Cipinang"},
+				{"loc":[-6.70626629,108.55578356], "title":"Stasiun Cirebon"},
+				{"loc":[-6.719282,108.5588], "title":"Stasiun Cirebon Prujakan"},
+				{"loc":[-6.913973,106.887504], "title":"Stasiun Cisaat"},
+				{"loc":[-6.39306778,107.43328473], "title":"Stasiun Dawuan"},
+				{"loc":[-6.17781818,106.83000043], "title":"Stasiun Gambir"},
+				{"loc":[-7.388968,112.728455], "title":"Stasiun Gedangan"},
+				{"loc":[-6.940719,107.689463], "title":"Stasiun Gedebage"},
+				{"loc":[-7.498011,111.4186], "title":"Stasiun Geneng"},
+				{"loc":[-6.185644,106.83258], "title":"Stasiun Gondangdia"},
+				{"loc":[-6.458588,107.940879], "title":"Stasiun Haurgeulis"},
+				{"loc":[-6.21484477,106.87169415], "title":"Stasiun Jatinegara"},
+				{"loc":[-8.16525569,113.70317507], "title":"Stasiun Jember"},
+				{"loc":[-7.802712,110.001232], "title":"Stasiun Jenar"},
+				{"loc":[-7.55833366,112.23313746], "title":"Stasiun Jombang"},
+				{"loc":[-7.633225,109.573441], "title":"Stasiun Karanganyar"},
+				{"loc":[-6.3048124,107.29976799], "title":"Stasiun Karawang"},
+				{"loc":[-7.6820321,109.66264305], "title":"Stasiun Kebumen"},
+				{"loc":[-7.81741395,112.01548657], "title":"Stasiun Kediri"},
+				{"loc":[-6.269994,107.26092], "title":"Stasiun Kedunggedeh"},
+				{"loc":[-7.621356,109.315025], "title":"Stasiun Kemranjen"},
+				{"loc":[-7.59197582,112.10009371], "title":"Stasiun Kertosono"},
+				{"loc":[-6.938282,108.884343], "title":"Stasiun Ketanggungan"},
+				{"loc":[-6.92465373,107.64665079], "title":"Stasiun Kiaracondong"},
+				{"loc":[-7.71253927,110.60270383], "title":"Stasiun Klaten"},
+				{"loc":[-6.213139,106.899326], "title":"Stasiun Klender"},
+				{"loc":[-6.369392,107.37495071], "title":"Stasiun Kosambi"},
+				{"loc":[-7.948708,111.960322], "title":"Stasiun Kras"},
+				{"loc":[-7.63018742,109.25360949], "title":"Stasiun Kroya"},
+				{"loc":[-7.72616372,109.90629185], "title":"Stasiun Kutoarjo"},
+				{"loc":[-7.71683,109.734297], "title":"Stasiun Kutowinangun"},
+				{"loc":[-7.112529,112.420181], "title":"Stasiun Lamongan"},
+				{"loc":[-7.8367,112.697624], "title":"Stasiun Lawang"},
+				{"loc":[-7.084536,107.89965], "title":"Stasiun Leles"},
+				{"loc":[-6.270507,107.179534], "title":"Stasiun Lemah Abang"},
+				{"loc":[-7.79009524,110.37415035], "title":"Stasiun Lempuyangan"},
+				{"loc":[-7.61890853,111.52383068], "title":"Stasiun Madiun"},
+				{"loc":[-7.785017,110.436865], "title":"Stasiun Maguwo"},
+				{"loc":[-7.97744988,112.63764538], "title":"Stasiun Malang"},
+				{"loc":[-6.21025714,106.849606], "title":"Stasiun Manggarai"},
+				{"loc":[-7.47239991,112.43359738], "title":"Stasiun Mojokerto"},
+				{"loc":[-7.018753,107.887423], "title":"Stasiun Nagreg"},
+				{"loc":[-8.102927,112.011953], "title":"Stasiun Ngunut"},
+				{"loc":[-7.48588,109.213436], "title":"Stasiun Notog"},
+				{"loc":[-6.409213,107.584015], "title":"Stasiun Pabuaran"},
+				{"loc":[-6.84262117,107.49714893], "title":"Stasiun Padalarang"},
+				{"loc":[-7.697604,112.079506], "title":"Stasiun Papar"},
+				{"loc":[-7.442147,111.386492], "title":"Stasiun Paron"},
+				{"loc":[-6.1751549,106.84459052], "title":"Stasiun Pasar Senen"},
+				{"loc":[-7.63786,112.910008], "title":"Stasiun Pasuruan"},
+				{"loc":[-6.453729,107.816754], "title":"Stasiun Pegadenbaru"},
+				{"loc":[-6.88977483,109.66399064], "title":"Stasiun Pekalongan"},
+				{"loc":[-6.887358,109.388207], "title":"Stasiun Pemalang"},
+				{"loc":[-6.552759,107.44647], "title":"Stasiun Purwakarta"},
+				{"loc":[-7.41908307,109.22154517], "title":"Stasiun Purwokerto"},
+				{"loc":[-7.56171817,110.79622625], "title":"Stasiun Purwosari"},
+				{"loc":[-7.192286,111.398026], "title":"Stasiun Randublatung"},
+				{"loc":[-6.97270578,110.41452072], "title":"Stasiun Semarang Poncol"},
+				{"loc":[-6.96502519,110.42758466], "title":"Stasiun Semarang Tawang"},
+				{"loc":[-7.582631,112.167064], "title":"Stasiun Sembung"},
+				{"loc":[-7.347183,112.69748], "title":"Stasiun Sepanjang"},
+				{"loc":[-7.486315,108.807524], "title":"Stasiun Sidareja"},
+				{"loc":[-7.45675591,112.71273101], "title":"Stasiun Sidoarjo"},
+				{"loc":[-7.55720303,110.82102849], "title":"Stasiun Solo Balapan"},
+				{"loc":[-7.56221176,110.83949093], "title":"Stasiun Solo Jebres"},
+				{"loc":[-7.42928693,111.01785779], "title":"Stasiun Sragen"},
+				{"loc":[-6.92507118,106.92959345], "title":"Stasiun Sukabumi"},
+				{"loc":[-7.61515432,109.36116497], "title":"Stasiun Sumpiuh"},
+				{"loc":[-7.2657093,112.7530779], "title":"Stasiun Surabaya Gubeng"},
+				{"loc":[-7.24896672,112.73114745], "title":"Stasiun Surabaya Pasarturi"},
+				{"loc":[-6.25851998,107.05517649], "title":"Stasiun Tambun"},
+				{"loc":[-6.18613938,106.81089537], "title":"Stasiun Tanah Abang"},
+				{"loc":[-6.110915,106.881112], "title":"Stasiun Tanjung Priuk "},
+				{"loc":[-7.32237634,108.22381984], "title":"Stasiun Tasikmalaya"},
+				{"loc":[-6.86843366,109.14270185], "title":"Stasiun Tegal"},
+				{"loc":[-8.06354478,111.90454911], "title":"Stasiun Tulungagung"},
+				{"loc":[-7.35308232,112.72927528], "title":"Stasiun Waru"},
+				{"loc":[-7.85963138,110.15720899], "title":"Stasiun Wates"},
+				{"loc":[-6.97091878,110.06970009], "title":"Stasiun Weleri"},
+				{"loc":[-7.81591048,110.9219065], "title":"Stasiun Wonogiri"},
+				{"loc":[-7.30228261,112.73876629], "title":"Stasiun Wonokromo"},
+				{"loc":[-7.69730471,109.70123658], "title":"Stasiun Wonosari"},
+				{"loc":[-7.78968799,110.36529828], "title":"Stasiun Yogyakarta"}
+			]
+
+			var markersLayer1 = new L.LayerGroup();	//layer contain searched elements
+	
+			map.addLayer(markersLayer1);
+
+			var controlSearch1 = new L.Control.Search({
+				container: 'findbox',		
+				layer: markersLayer1,
+				textPlaceholder: 'Lokasi Komplain, ketik stasiun..',
+				textErr: 'Tidak ada komplain di lokasi tersebut.',
+				initial: false,
+				zoom: 18,
+				marker: false,
+				collapsed: false
+			});
+			map.addControl( controlSearch1 );
+
+			for(i in data1) {
+				var title = data1[i].title,	//value searched
+					loc = data1[i].loc,		//position found
+					info = data1[i].info,
+					marker = new L.Marker(new L.latLng(loc), {title: title,  opacity: 0});//se property searched
+				
+					markersLayer1.addLayer(marker);
+			}
 			
 			
 		var hg = L.control.heightgraph({
-             width: 500,
+             width: 600,
              height: 195,
              margins: {
                  top: 10,
@@ -250,7 +361,6 @@ $(function() {
 		zoomHome.addTo(map);
 		
 		var cb2 = {
-		"Komplain" : markers,
 		"Rel KA" : cb1,
 		"Stasiun" : markersLayer
 		};
@@ -285,6 +395,168 @@ $(function() {
 		$(".leaflet-control-layers-list").prepend("<strong class='title'>Base Maps</strong><br>");
 		$(".leaflet-control-layers-separator").after("<br><strong class='title'>Layers</strong><br>");
 
+		var markersjan = L.markerClusterGroup({ chunkedLoading: true });
+		
+		for (var i = 0; i < jan.length; i++) {
+			var a = jan[i];
+			var title = a[2];
+			var marker1 = L.marker(L.latLng(a[0], a[1]), { title: title });
+			marker1.bindPopup(title);
+			markersjan.addLayer(marker1);
+		}
+
+		var markersfeb = L.markerClusterGroup({ chunkedLoading: true });
+		
+		for (var i = 0; i < feb.length; i++) {
+			var a = feb[i];
+			var title = a[2];
+			var marker2 = L.marker(L.latLng(a[0], a[1]), { title: title });
+			marker2.bindPopup(title);
+			markersfeb.addLayer(marker2);
+		}
+
+		var markersmar = L.markerClusterGroup({ chunkedLoading: true });
+		
+		for (var i = 0; i < mar.length; i++) {
+			var a = mar[i];
+			var title = a[2];
+			var marker3 = L.marker(L.latLng(a[0], a[1]), { title: title });
+			marker3.bindPopup(title);
+			markersmar.addLayer(marker3);
+		}
+
+		var markersapr = L.markerClusterGroup({ chunkedLoading: true });
+		
+		for (var i = 0; i < apr.length; i++) {
+			var a = apr[i];
+			var title = a[2];
+			var marker4 = L.marker(L.latLng(a[0], a[1]), { title: title });
+			marker4.bindPopup(title);
+			markersapr.addLayer(marker4);
+		}
+		var markersmei = L.markerClusterGroup({ chunkedLoading: true });
+		
+		for (var i = 0; i < mei.length; i++) {
+			var a = mei[i];
+			var title = a[2];
+			var marker5 = L.marker(L.latLng(a[0], a[1]), { title: title });
+			marker5.bindPopup(title);
+			markersmei.addLayer(marker5);
+		}
+
+		var markersjun = L.markerClusterGroup({ chunkedLoading: true });
+		
+		for (var i = 0; i < jun.length; i++) {
+			var a = jun[i];
+			var title = a[2];
+			var marker6 = L.marker(L.latLng(a[0], a[1]), { title: title });
+			marker6.bindPopup(title);
+			markersjun.addLayer(marker6);
+		}
+
+		var markersjul = L.markerClusterGroup({ chunkedLoading: true });
+		
+		for (var i = 0; i < jul.length; i++) {
+			var a = jul[i];
+			var title = a[2];
+			var marker7 = L.marker(L.latLng(a[0], a[1]), { title: title });
+			marker7.bindPopup(title);
+			markersjul.addLayer(marker7);
+		}
+
+		var markersagst = L.markerClusterGroup({ chunkedLoading: true });
+		
+		for (var i = 0; i < agst.length; i++) {
+			var a = agst[i];
+			var title = a[2];
+			var marker8 = L.marker(L.latLng(a[0], a[1]), { title: title });
+			marker8.bindPopup(title);
+			markersagst.addLayer(marker8);
+		}
+
+		var markerssept = L.markerClusterGroup({ chunkedLoading: true });
+		
+		for (var i = 0; i < sept.length; i++) {
+			var a = sept[i];
+			var title = a[2];
+			var marker9 = L.marker(L.latLng(a[0], a[1]), { title: title });
+			marker9.bindPopup(title);
+			markerssept.addLayer(marker9);
+		}
+
+		var markersokt = L.markerClusterGroup({ chunkedLoading: true });
+		
+		for (var i = 0; i < okt.length; i++) {
+			var a = okt[i];
+			var title = a[2];
+			var marker10 = L.marker(L.latLng(a[0], a[1]), { title: title });
+			marker10.bindPopup(title);
+			markersokt.addLayer(marker10);
+		}
+
+		var markersnov = L.markerClusterGroup({ chunkedLoading: true });
+		
+		for (var i = 0; i < nov.length; i++) {
+			var a = nov[i];
+			var title = a[2];
+			var marker11 = L.marker(L.latLng(a[0], a[1]), { title: title });
+			marker11.bindPopup(title);
+			markersnov.addLayer(marker11);
+		}
+
+		var markersdes = L.markerClusterGroup({ chunkedLoading: true });
+		
+		for (var i = 0; i < des.length; i++) {
+			var a = des[i];
+			var title = a[2];
+			var marker12 = L.marker(L.latLng(a[0], a[1]), { title: title });
+			marker12.bindPopup(title);
+			markersdes.addLayer(marker12);
+		}
+
+		var cb3 ={
+			"Total Komplain Tahun 2019" : markers,
+		}
+
+		var layerControl2 = L.control.layers(
+			null,
+			cb3, 
+			{
+			  position: "topleft",
+			  collapsed: false
+			}
+		  ).addTo(map);
+
+		  var layerControlContainer2 = layerControl2.getContainer();
+		$("#layercontrol1").append(layerControlContainer2);
+
+		var cb4 = {
+			
+			"Januari 2019" : markersjan,
+			"Februari 2019" : markersfeb,
+			"Maret 2019" : markersmar,
+			"April 2019" : markersapr,
+			"Mei 2019" : markersmei,
+			"Juni 2019" : markersjun,
+			"Juli 2019" : markersjul,
+			"Agustus 2019" : markersagst,
+			"September 2019" : markerssept,
+			"Oktober 2019" : markersokt,
+			"November 2019" : markersnov,
+			"Desember 2019" : markersdes
+			};
+
+		var layerControl1 = L.control.layers(
+			null,
+			cb4, 
+			{
+			  position: "topleft",
+			  collapsed: false
+			}
+		  ).addTo(map);
+
+		  var layerControlContainer1 = layerControl1.getContainer();
+		$("#layercontrol2").append(layerControlContainer1);
 
     // Colors for AwesomeMarkers
    var lokoIcon = L.icon({
@@ -360,5 +632,64 @@ $(function() {
     
     // Add data
     playback.addData(ka85);
-       
+	   
+	var options = {
+		series: [{
+		name: 'Jumlah',
+		data: [21, 20, 24, 28, 24, 30, 49, 33, 29, 28, 50, 166]
+	  }],
+	  chart: {
+		height: 300,
+		type: 'bar',
+	  },
+	  plotOptions: {
+		bar: {
+		  columnWidth: '50%',
+		  endingShape: 'rounded'  
+		}
+	  },
+	  dataLabels: {
+		enabled: false
+	  },
+	  stroke: {
+		width: 2
+	  },
+	  
+	  grid: {
+		row: {
+		  colors: ['#fff', '#f2f2f2']
+		}
+	  },
+	  xaxis: {
+		labels: {
+		  rotate: -45
+		},
+		categories: ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni',
+		  'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'
+		],
+		tickPlacement: 'on'
+	  },
+	  yaxis: {
+		title: {
+		  text: 'Jumlah Komplain',
+		},
+	  },
+	  fill: {
+		type: 'gradient',
+		gradient: {
+		  shade: 'light',
+		  type: "horizontal",
+		  shadeIntensity: 0.25,
+		  gradientToColors: undefined,
+		  inverseColors: true,
+		  opacityFrom: 0.85,
+		  opacityTo: 0.85,
+		  stops: [50, 0, 100]
+		},
+	  }
+	  };
+
+	  var chart = new ApexCharts(document.querySelector("#chart"), options);
+	  chart.render();
+	  
 });
